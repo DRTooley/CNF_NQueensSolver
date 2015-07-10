@@ -23,7 +23,7 @@ void printCNF(vector<vector<int>> &CNF, int N, string fileName);
 int main(int argc, char * argv[]){
 
 
-	cout << "This program will first solve all items listed in #2 and save the DIAMACS formatted file for each " <<
+	cout << "This program will first solve all items listed and save the DIAMACS formatted file for each " <<
 		"as 2_1.txt for problem 2 part 1, 2_2.txt for problem 2.2 ect. after that you may do a custom n-queens " <<
 		"problem with selected forbidden squares or enter a negative N value to skip that section." << endl << endl;
 
@@ -49,7 +49,7 @@ int main(int argc, char * argv[]){
 	solutionToQueens(0, Board1, FS1, CNF1);
 	cout << endl; 
 	logicalBoardLayout(N1);
-	printCNF(CNF1, N1, "2_1.txt");
+	printCNF(CNF1, N1, "CNF_Files/2_1.txt");
 
 	//2.2
 	Master = false;
@@ -77,7 +77,7 @@ int main(int argc, char * argv[]){
 	solutionToQueens(0, Board2, FS2, CNF2);
 	cout << endl;
 	logicalBoardLayout(N2);
-	printCNF(CNF2, N2, "2_2.txt");
+	printCNF(CNF2, N2, "CNF_Files/2_2.txt");
 
 	//2.3
 	Master = false;
@@ -104,7 +104,7 @@ int main(int argc, char * argv[]){
 	solutionToQueens(0, Board3, FS3, CNF3);
 	cout << endl;
 	logicalBoardLayout(N3);
-	printCNF(CNF3, N3, "2_3.txt");
+	printCNF(CNF3, N3, "CNF_Files2_3.txt");
 
 
 	//2.4
@@ -131,7 +131,7 @@ int main(int argc, char * argv[]){
 	solutionToQueens(0, Board4, FS4, CNF4);
 	cout << endl;
 	logicalBoardLayout(N4);
-	printCNF(CNF4, N4, "2_4.txt");
+	printCNF(CNF4, N4, "CNF_Files/2_4.txt");
 
 
 
@@ -174,6 +174,7 @@ void printCNF(vector<vector<int>> &CNF, int N, string fileName){
 	ofstream file;
 	file.open(fileName);
 	s_cnf = "p cnf " + to_string(N*N) + ' ' + to_string(CNF.size()) + '\n';
+	file << s_cnf;
 	for (auto line : CNF){
 		s_cnf = "";
 		for (auto num : line){
